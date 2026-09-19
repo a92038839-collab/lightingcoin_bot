@@ -11,8 +11,10 @@ const bot = new TelegramBot(process.env.BOT_TOKEN, {
   polling: true
 });
 
+app.use(express.static("web"));
+
 app.get("/", (req, res) => {
-  res.send("LIGHTING COIN BOT IS RUNNING ⚡🪙");
+  res.sendFile(__dirname + "/web/index.html");
 });
 
 bot.onText(/\/start/, (msg) => {
